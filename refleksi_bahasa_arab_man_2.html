@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refleksi Pembelajaran Bahasa Arab - MAN 2</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2canvas for capturing canvas + certificate -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        },
+                        mint: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            500: '#14b8a6',
+                            700: '#0f766e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        arabic: ['Tajawal', 'Amiri', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .font-arabic {
+            font-family: 'Tajawal', 'Amiri', serif;
+            direction: rtl;
+        }
+        .bg-islamic-pattern {
+            background-color: #052e16;
+            background-image: radial-gradient(#f59e0b 0.8px, transparent 0.8px), radial-gradient(#f59e0b 0.8px, #052e16 0.8px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+        }
+        .card-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .cert-border {
+            background-color: #ffffff;
+            background-image: radial-gradient(#14b8a6 0.4px, transparent 0.4px);
+            background-size: 10px 10px;
+        }
+        canvas {
+            touch-action: none;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background: white !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800 min-h-screen flex flex-col selection:bg-gold-500 selection:text-white">
+
+    <!-- TOP HEADER / BANNER -->
+    <header class="bg-islamic-pattern text-white relative overflow-hidden border-b-4 border-gold-500 shadow-xl no-print">
+        <div class="max-w-6xl mx-auto px-4 py-6 md:py-10 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="text-center md:text-left space-y-2">
+                    <div class="inline-flex items-center gap-2 bg-emerald-900/80 border border-gold-400/50 px-3 py-1 rounded-full text-xs font-semibold tracking-wide text-gold-400">
+                        <i class="fa-solid fa-star-and-crescent text-gold-400"></i>
+                        <span>MADRASAH ALIYAH NEGERI 2 (MAN 2)</span>
+                    </div>
+                    <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-white">
+                        Refleksi Pembelajaran <span class="text-gold-400">Bahasa Arab</span>
+                    </h1>
+                    <p class="font-arabic text-xl md:text-2xl text-emerald-200">
+                        تَجْرِبَتِي وَشُعُورِي فِي تَعَلُّمِ اللُّغَةِ الْعَرَبِيَّةِ • كَلَاس X & XI
+                    </p>
+                    <p class="text-xs md:text-sm text-slate-300 max-w-xl">
+                        Ruang ekspresi siswa Kelas X dan XI MAN 2 untuk menceritakan pengalaman belajar dan melukiskan perasaan di Kanvas Ekspresi Bahasa Arab.
+                    </p>
+                </div>
+
+                <!-- Mascot / Emblem Badge -->
+                <div class="flex-shrink-0">
+                    <div class="bg-gradient-to-tr from-gold-500 via-emerald-600 to-mint-500 p-1 rounded-3xl shadow-xl hover:scale-105 transition duration-300">
+                        <div class="bg-emerald-950 px-5 py-4 rounded-[22px] flex flex-col items-center justify-center text-center border border-gold-400/30">
+                            <span class="text-3xl mb-1">✍️🎨</span>
+                            <span class="font-arabic text-lg font-bold text-gold-400">لَوْحَةُ التَّأَمُّلِ</span>
+                            <span class="text-[10px] font-bold text-emerald-200 tracking-wider uppercase">Kelas 10 & 11 MAN 2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8 space-y-8">
+
+        <!-- STUDENT IDENTITY FORM -->
+        <section class="card-glass rounded-2xl p-6 shadow-md border border-slate-200 no-print">
+            <h2 class="text-base font-bold text-emerald-900 flex items-center gap-2 mb-4 border-b pb-2 border-slate-100">
+                <i class="fa-solid fa-id-card text-gold-500"></i>
+                Identitas Siswa Reflektif
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nama Lengkap *</label>
+                    <input type="text" id="student-name" placeholder="Contoh: Muhammad Farhan" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Kelas *</label>
+                    <select id="student-class" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm bg-white">
+                        <option value="">-- Pilih Kelas --</option>
+                        <optgroup label="Kelas X">
+                            <option value="X-1">X-1</option>
+                            <option value="X-2">X-2</option>
+                            <option value="X-3">X-3</option>
+                            <option value="X-4">X-4</option>
+                            <option value="X-5">X-5</option>
+                            <option value="X-6">X-6</option>
+                            <option value="X-7">X-7</option>
+                            <option value="X-8">X-8</option>
+                            <option value="X-9">X-9</option>
+                            <option value="X-10">X-10</option>
+                        </optgroup>
+                        <optgroup label="Kelas XI">
+                            <option value="XI-1">XI-1</option>
+                            <option value="XI-2">XI-2</option>
+                            <option value="XI-3">XI-3</option>
+                            <option value="XI-4">XI-4</option>
+                            <option value="XI-5">XI-5</option>
+                            <option value="XI-6">XI-6</option>
+                            <option value="XI-7">XI-7</option>
+                            <option value="XI-8">XI-8</option>
+                            <option value="XI-9">XI-9</option>
+                            <option value="XI-10">XI-10</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Nomor Absen *</label>
+                    <input type="number" id="student-no" placeholder="Contoh: 14" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm">
+                </div>
+            </div>
+        </section>
+
+        <!-- NAVIGATION TABS -->
+        <div class="flex flex-col sm:flex-row gap-3 no-print">
+            <button id="btn-tab-1" onclick="switchTab(1)" class="flex-1 py-3.5 px-5 rounded-2xl font-bold text-sm md:text-base flex items-center justify-center gap-3 transition-all duration-200 bg-emerald-800 text-white shadow-md">
+                <i class="fa-solid fa-pen-fancy text-gold-400"></i>
+                <div class="text-left">
+                    <div class="text-[10px] uppercase text-emerald-200">Komponen 1</div>
+                    <div>Cerita Pengalaman & Perasaan</div>
+                </div>
+            </button>
+            <button id="btn-tab-2" onclick="switchTab(2)" class="flex-1 py-3.5 px-5 rounded-2xl font-bold text-sm md:text-base flex items-center justify-center gap-3 transition-all duration-200 bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">
+                <i class="fa-solid fa-palette text-mint-500"></i>
+                <div class="text-left">
+                    <div class="text-[10px] uppercase text-slate-400">Komponen 2</div>
+                    <div>Kanvas Ekspresi (Menggambar)</div>
+                </div>
+            </button>
+        </div>
+
+        <!-- COMPONENT 1: WRITING STORY & MOOD -->
+        <section id="tab-component-1" class="card-glass rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 space-y-6 no-print">
+            <div class="border-b border-slate-200 pb-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                    <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full uppercase">Refleksi Menulis Narasi</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mt-1">1. Cerita Pengalaman & Perasaan Belajar</h3>
+                    <p class="text-slate-600 text-xs md:text-sm">Tuliskan pengalamanku selama belajar Bahasa Arab di kelas X/XI secara santai dan jujur.</p>
+                </div>
+                <div class="font-arabic text-xl font-bold text-emerald-800 bg-emerald-50 px-4 py-2 rounded-xl border border-emerald-200 self-start md:self-auto">
+                    تَجْرِبَتِي وَشُعُورِي
+                </div>
+            </div>
+
+            <!-- Mood Selection -->
+            <div class="space-y-3 bg-emerald-50/60 p-4 rounded-xl border border-emerald-100">
+                <label class="block text-xs font-bold text-emerald-900 uppercase">Pilih Mood / Perasaanmu Terhadap Bahasa Arab Saat Ini *</label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+                    <button type="button" onclick="selectMood('😊 Sangat Senang', this)" class="mood-btn p-3 bg-white border border-slate-200 rounded-xl hover:border-emerald-500 transition flex flex-col items-center gap-1 shadow-sm">
+                        <span class="text-2xl">😊</span>
+                        <span class="text-xs font-bold text-slate-700">Sangat Senang</span>
+                    </button>
+                    <button type="button" onclick="selectMood('😎 Percaya Diri', this)" class="mood-btn p-3 bg-white border border-slate-200 rounded-xl hover:border-emerald-500 transition flex flex-col items-center gap-1 shadow-sm">
+                        <span class="text-2xl">😎</span>
+                        <span class="text-xs font-bold text-slate-700">Percaya Diri</span>
+                    </button>
+                    <button type="button" onclick="selectMood('🤯 Tertantang', this)" class="mood-btn p-3 bg-white border border-slate-200 rounded-xl hover:border-emerald-500 transition flex flex-col items-center gap-1 shadow-sm">
+                        <span class="text-2xl">🤯</span>
+                        <span class="text-xs font-bold text-slate-700">Tertantang</span>
+                    </button>
+                    <button type="button" onclick="selectMood('🤔 Butuh Bantuan', this)" class="mood-btn p-3 bg-white border border-slate-200 rounded-xl hover:border-emerald-500 transition flex flex-col items-center gap-1 shadow-sm">
+                        <span class="text-2xl">🤔</span>
+                        <span class="text-xs font-bold text-slate-700">Butuh Bantuan</span>
+                    </button>
+                    <button type="button" onclick="selectMood('🌟 Makin Penasaran', this)" class="mood-btn p-3 bg-white border border-slate-200 rounded-xl hover:border-emerald-500 transition flex flex-col items-center gap-1 shadow-sm">
+                        <span class="text-2xl">🌟</span>
+                        <span class="text-xs font-bold text-slate-700">Makin Penasaran</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Arabic Phrase Chips -->
+            <div class="space-y-2">
+                <label class="block text-xs font-bold text-slate-700 uppercase">
+                    <i class="fa-solid fa-lightbulb text-gold-500 mr-1"></i>
+                    Bantuan Frasa Bahasa Arab (Klik untuk memasukkan ke dalam cerita):
+                </label>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" onclick="insertPhrase('أَنَا سَعِيدٌ جِدًّا ')" class="px-3 py-1.5 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 text-slate-700 rounded-lg text-xs font-semibold border border-slate-200 transition font-arabic">
+                        أَنَا سَعِيدٌ جِدًّا (Saya sangat senang)
+                    </button>
+                    <button type="button" onclick="insertPhrase('تَعَلَّمْتُ الْيَوْمَ ')" class="px-3 py-1.5 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 text-slate-700 rounded-lg text-xs font-semibold border border-slate-200 transition font-arabic">
+                        تَعَلَّمْتُ الْيَوْمَ (Hari ini saya belajar)
+                    </button>
+                    <button type="button" onclick="insertPhrase('اللُّغَةُ الْعَرَبِيَّةُ سَهْلَةٌ وَمُمْتِعَةٌ ')" class="px-3 py-1.5 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 text-slate-700 rounded-lg text-xs font-semibold border border-slate-200 transition font-arabic">
+                        اللُّغَةُ الْعَرَبِيَّةُ سَهْلَةٌ وَمُمْتِعَةٌ (B. Arab mudah & menyenangkan)
+                    </button>
+                    <button type="button" onclick="insertPhrase('أُحِبُّ التَّحَدُّثَ ')" class="px-3 py-1.5 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 text-slate-700 rounded-lg text-xs font-semibold border border-slate-200 transition font-arabic">
+                        أُحِبُّ التَّحَدُّثَ (Saya suka berbicara)
+                    </button>
+                    <button type="button" onclick="insertPhrase('شُكْرًا لِلأُسْتَاذِ ')" class="px-3 py-1.5 bg-slate-100 hover:bg-emerald-100 hover:text-emerald-800 text-slate-700 rounded-lg text-xs font-semibold border border-slate-200 transition font-arabic">
+                        شُكْرًا لِلأُسْتَاذِ (Terima kasih Ustaz)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Narrative Story Textarea -->
+            <div class="space-y-2">
+                <div class="flex justify-between items-center">
+                    <label class="block text-xs font-bold text-slate-800 uppercase">Cerita Pengalaman & Refleksi Pribadi *</label>
+                    <span id="word-count" class="text-xs text-slate-500 font-medium">0 kata</span>
+                </div>
+                <textarea id="reflection-story" rows="6" oninput="updateWordCount()" placeholder="Tuliskan ceritamu di sini... Panduan: 
+1. Materi apa yang paling kamu sukai di kelas X/XI?
+2. Momen paling seru/berkesan saat belajar Bahasa Arab bersama ustadz/ustadzah?
+3. Kesulitan apa yang ditemui dan bagaimana cara menghadapinya?
+4. Harapanmu untuk pembelajaran ke depan..." class="w-full p-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-600 focus:border-transparent outline-none text-sm leading-relaxed"></textarea>
+            </div>
+        </section>
+
+        <!-- COMPONENT 2: DRAWING CANVAS & STICKERS -->
+        <section id="tab-component-2" class="card-glass rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 space-y-6 hidden no-print">
+            <div class="border-b border-slate-200 pb-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                    <span class="px-3 py-1 bg-mint-100 text-mint-700 text-xs font-bold rounded-full uppercase">Ekspresi Visual</span>
+                    <h3 class="text-xl md:text-2xl font-bold text-slate-900 mt-1">2. Kanvas Ekspresi (Menggambar Refleksi)</h3>
+                    <p class="text-slate-600 text-xs md:text-sm">Gambarkan perasaanmu, simbol pembelajaran, atau tempelkan stempel stiker khas Bahasa Arab MAN 2!</p>
+                </div>
+                <div class="font-arabic text-xl font-bold text-mint-700 bg-mint-50 px-4 py-2 rounded-xl border border-mint-200 self-start md:self-auto">
+                    لَوْحَةُ التَّعْبِيرِ
+                </div>
+            </div>
+
+            <!-- Canvas Controls Toolbar -->
+            <div class="bg-slate-100 p-3.5 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-3">
+                <!-- Color Selector -->
+                <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-bold text-slate-600 mr-1">Warna:</span>
+                    <button type="button" onclick="setCanvasColor('#0d9488', this)" class="color-btn w-7 h-7 rounded-full bg-teal-600 ring-2 ring-emerald-600"></button>
+                    <button type="button" onclick="setCanvasColor('#16a34a', this)" class="color-btn w-7 h-7 rounded-full bg-emerald-600"></button>
+                    <button type="button" onclick="setCanvasColor('#d97706', this)" class="color-btn w-7 h-7 rounded-full bg-amber-600"></button>
+                    <button type="button" onclick="setCanvasColor('#dc2626', this)" class="color-btn w-7 h-7 rounded-full bg-red-600"></button>
+                    <button type="button" onclick="setCanvasColor('#2563eb', this)" class="color-btn w-7 h-7 rounded-full bg-blue-600"></button>
+                    <button type="button" onclick="setCanvasColor('#0284c7', this)" class="color-btn w-7 h-7 rounded-full bg-sky-600"></button>
+                    <button type="button" onclick="setCanvasColor('#1e293b', this)" class="color-btn w-7 h-7 rounded-full bg-slate-800"></button>
+                </div>
+
+                <!-- Brush Size -->
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold text-slate-600">Kuas:</span>
+                    <input type="range" id="brush-size" min="2" max="24" value="4" onchange="setBrushSize(this.value)" class="w-24 accent-emerald-700">
+                </div>
+
+                <!-- Mode & Actions -->
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="setMode('draw')" id="btn-mode-draw" class="px-3 py-1.5 bg-emerald-800 text-white font-bold text-xs rounded-lg transition shadow-sm">
+                        <i class="fa-solid fa-paintbrush mr-1"></i> Kuas
+                    </button>
+                    <button type="button" onclick="setMode('erase')" id="btn-mode-erase" class="px-3 py-1.5 bg-white text-slate-700 font-bold text-xs rounded-lg border border-slate-300 hover:bg-slate-50 transition">
+                        <i class="fa-solid fa-eraser mr-1"></i> Penghapus
+                    </button>
+                    <button type="button" onclick="clearCanvas()" class="px-3 py-1.5 bg-rose-100 text-rose-700 font-bold text-xs rounded-lg hover:bg-rose-200 transition">
+                        <i class="fa-solid fa-trash mr-1"></i> Bersihkan
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stamp Stickers Toolbar -->
+            <div class="space-y-1.5">
+                <span class="text-xs font-bold text-slate-700 uppercase">
+                    <i class="fa-solid fa-icons text-gold-500 mr-1"></i>
+                    Stempel Stiker Arab & Ekspresi (Klik stiker lalu klik pada kanvas):
+                </span>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" onclick="selectSticker('🌟')" class="sticker-btn p-2 bg-white border border-slate-200 hover:border-gold-500 rounded-xl text-xl shadow-sm">🌟 Bintang</button>
+                    <button type="button" onclick="selectSticker('📖')" class="sticker-btn p-2 bg-white border border-slate-200 hover:border-gold-500 rounded-xl text-xl shadow-sm">📖 Buku</button>
+                    <button type="button" onclick="selectSticker('🌙')" class="sticker-btn p-2 bg-white border border-slate-200 hover:border-gold-500 rounded-xl text-xl shadow-sm">🌙 Bulan</button>
+                    <button type="button" onclick="selectSticker('👍')" class="sticker-btn p-2 bg-white border border-slate-200 hover:border-gold-500 rounded-xl text-xl shadow-sm">👍 Mantap</button>
+                    <button type="button" onclick="selectSticker('🕌')" class="sticker-btn p-2 bg-white border border-slate-200 hover:border-gold-500 rounded-xl text-xl shadow-sm">🕌 Masjid</button>
+                    <button type="button" onclick="selectSticker('❤️')" class="sticker-btn p-2 bg-white border border-slate-200 hover:border-gold-500 rounded-xl text-xl shadow-sm">❤️ Cinta B. Arab</button>
+                    <button type="button" onclick="selectSticker('ممتاز')" class="sticker-btn px-3 py-2 bg-emerald-50 border border-emerald-200 hover:border-emerald-500 rounded-xl text-sm font-bold text-emerald-800 font-arabic shadow-sm">ممتاز (Mumtaz)</button>
+                    <button type="button" onclick="selectSticker('شكراً')" class="sticker-btn px-3 py-2 bg-teal-50 border border-teal-200 hover:border-teal-500 rounded-xl text-sm font-bold text-teal-800 font-arabic shadow-sm">شكراً (Syukran)</button>
+                </div>
+            </div>
+
+            <!-- Interactive Drawing Canvas -->
+            <div class="relative w-full aspect-[16/9] md:aspect-[2/1] bg-white rounded-2xl border-2 border-dashed border-emerald-300 shadow-inner overflow-hidden">
+                <canvas id="express-canvas" class="w-full h-full cursor-crosshair"></canvas>
+                <div id="canvas-placeholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-400 pointer-events-none p-4 text-center">
+                    <i class="fa-solid fa-paintbrush text-3xl mb-2 text-slate-300"></i>
+                    <p class="text-xs md:text-sm font-medium">Mulai menggambar atau menambahkan stiker di sini...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBMIT & PUBLISH ACTION -->
+        <div class="flex flex-wrap items-center justify-center gap-4 py-4 no-print">
+            <button onclick="submitAndPreview()" class="px-8 py-4 bg-emerald-800 hover:bg-emerald-900 text-white font-extrabold rounded-2xl shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-3 text-base">
+                <i class="fa-solid fa-paper-plane text-gold-400"></i>
+                Kirim & Publikasikan Refleksi Saya
+            </button>
+        </div>
+
+        <!-- LIVE REFLECTION GALLERY WALL -->
+        <section class="space-y-4 no-print border-t border-slate-200 pt-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-border-all text-emerald-700"></i>
+                        Dinding Refleksi Siswa MAN 2
+                    </h3>
+                    <p class="text-xs text-slate-500">Galeri publikasi refleksi siswa-siswi Kelas X dan XI secara langsung.</p>
+                </div>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full" id="gallery-count">3 Refleksi</span>
+            </div>
+
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <!-- Pre-populated Card 1 -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-start border-b pb-2 border-slate-100">
+                        <div>
+                            <strong class="text-sm font-bold text-slate-900 block">Siti Nurhaliza</strong>
+                            <span class="text-[11px] text-slate-500 font-semibold">Kelas X-3 • Absen 28</span>
+                        </div>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">😊 Sangat Senang</span>
+                    </div>
+                    <p class="text-xs text-slate-700 line-clamp-3 leading-relaxed">
+                        "Belajar Bahasa Arab di kelas X ternyata sangat seru! Materi yang paling saya sukai adalah *Hiwar* tentang hobi. Awalnya takut bicara, tapi ustadz membimbing dengan ramah."
+                    </p>
+                    <div class="bg-emerald-50/50 rounded-xl p-2 border border-emerald-100 text-[11px] font-arabic text-emerald-800 font-bold text-center">
+                        اللُّغَةُ الْعَرَبِيَّةُ سَهْلَةٌ وَمُمْتِعَةٌ 🌟
+                    </div>
+                </div>
+
+                <!-- Pre-populated Card 2 -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-start border-b pb-2 border-slate-100">
+                        <div>
+                            <strong class="text-sm font-bold text-slate-900 block">Rizky Ramadhan</strong>
+                            <span class="text-[11px] text-slate-500 font-semibold">Kelas XI-1 • Absen 12</span>
+                        </div>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">🤯 Tertantang</span>
+                    </div>
+                    <p class="text-xs text-slate-700 line-clamp-3 leading-relaxed">
+                        "Di kelas XI tata bahasa (*Kawaid*) makin menantang. Tapi saat berhasil menyusun kalimat panjang untuk cerita, rasanya puas sekali!"
+                    </p>
+                    <div class="bg-amber-50/50 rounded-xl p-2 border border-amber-100 text-[11px] font-arabic text-amber-800 font-bold text-center">
+                        تَعَلَّمْتُ الْيَوْمَ ❤️
+                    </div>
+                </div>
+
+                <!-- Pre-populated Card 3 -->
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-start border-b pb-2 border-slate-100">
+                        <div>
+                            <strong class="text-sm font-bold text-slate-900 block">Aisyah Azzahra</strong>
+                            <span class="text-[11px] text-slate-500 font-semibold">Kelas X-7 • Absen 04</span>
+                        </div>
+                        <span class="text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded-full font-bold">😎 Percaya Diri</span>
+                    </div>
+                    <p class="text-xs text-slate-700 line-clamp-3 leading-relaxed">
+                        "Saya paling suka kosa kata baru tentang lingkungan sekolah. Menggambar di kanvas ekspresi ini bikin makin paham alur pembelajarannya!"
+                    </p>
+                    <div class="bg-teal-50/50 rounded-xl p-2 border border-teal-100 text-[11px] font-arabic text-teal-800 font-bold text-center">
+                        شُكْرًا لِلأُسْتَاذِ 📖
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CERTIFICATE / REFLECTION SUMMARY MODAL -->
+    <div id="preview-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border-4 border-emerald-900 p-6 md:p-8 space-y-6 relative">
+            
+            <!-- Modal Close Button -->
+            <button onclick="closeModal()" class="no-print absolute top-4 right-4 w-10 h-10 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Printable Certificate Target Area -->
+            <div id="certificate-card" class="cert-border rounded-2xl p-6 md:p-8 border-2 border-emerald-800/30 space-y-6 relative overflow-hidden">
+                
+                <!-- Corner Ornaments -->
+                <div class="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-gold-500 rounded-tl-lg pointer-events-none"></div>
+                <div class="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-gold-500 rounded-tr-lg pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-gold-500 rounded-bl-lg pointer-events-none"></div>
+                <div class="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-gold-500 rounded-br-lg pointer-events-none"></div>
+
+                <!-- Header -->
+                <div class="text-center border-b pb-4 border-emerald-900/10 space-y-1">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-800">MADRASAH ALIYAH NEGERI 2 (MAN 2)</span>
+                    <h2 class="text-xl md:text-2xl font-black text-emerald-950 uppercase">LEMBAR REFLEKSI PEMBELAJARAN BAHASA ARAB</h2>
+                    <p class="font-arabic text-lg text-gold-600 font-bold">بطاقة التأمل الفردي للتلميذ</p>
+                </div>
+
+                <!-- Identity Grid -->
+                <div class="bg-emerald-50/80 rounded-xl p-3 border border-emerald-200 grid grid-cols-3 gap-2 text-xs">
+                    <div>
+                        <span class="text-slate-500 text-[10px] uppercase font-bold block">Nama Siswa:</span>
+                        <strong id="modal-name" class="text-emerald-950 font-bold text-sm">[Nama]</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 text-[10px] uppercase font-bold block">Kelas / Absen:</span>
+                        <strong id="modal-class-no" class="text-emerald-950 font-bold">[Kelas]</strong>
+                    </div>
+                    <div>
+                        <span class="text-slate-500 text-[10px] uppercase font-bold block">Mood Belajar:</span>
+                        <strong id="modal-mood" class="text-emerald-800 font-bold">[Mood]</strong>
+                    </div>
+                </div>
+
+                <!-- Story Reflection Section -->
+                <div class="space-y-1.5">
+                    <h4 class="text-xs font-bold text-slate-800 uppercase flex items-center gap-1.5">
+                        <i class="fa-solid fa-feather-pointed text-emerald-700"></i>
+                        1. Cerita Pengalaman & Perasaan:
+                    </h4>
+                    <div id="modal-story" class="bg-white/90 p-4 rounded-xl border border-slate-200 text-xs md:text-sm text-slate-800 leading-relaxed italic whitespace-pre-wrap">
+                        [Cerita Refleksi]
+                    </div>
+                </div>
+
+                <!-- Canvas Impression Display -->
+                <div class="space-y-1.5">
+                    <h4 class="text-xs font-bold text-slate-800 uppercase flex items-center gap-1.5">
+                        <i class="fa-solid fa-palette text-mint-700"></i>
+                        2. Hasil Kanvas Ekspresi Visual:
+                    </h4>
+                    <div class="bg-white rounded-xl border border-slate-200 p-2 flex justify-center">
+                        <img id="modal-canvas-img" src="" alt="Kanvas Ekspresi" class="max-h-56 rounded-lg object-contain">
+                    </div>
+                </div>
+
+                <!-- Signature Footer -->
+                <div class="pt-4 border-t border-slate-200 flex justify-between items-end text-center text-[11px]">
+                    <div>
+                        <p class="text-slate-500">Mengetahui,</p>
+                        <p class="font-bold text-slate-800 mt-6">Guru Bahasa Arab MAN 2</p>
+                    </div>
+                    <div class="font-arabic text-emerald-800 text-base font-bold">
+                        مَنْ جَدَّ وَجَدَ
+                    </div>
+                    <div>
+                        <p class="text-slate-500">Siswa Reflektif,</p>
+                        <p id="modal-sig-name" class="font-bold text-slate-800 mt-6">[Nama Siswa]</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Action Controls -->
+            <div class="no-print flex flex-wrap items-center justify-end gap-3 pt-2">
+                <button onclick="downloadCertificate()" class="px-5 py-2.5 bg-gold-500 hover:bg-gold-600 text-slate-900 font-bold rounded-xl text-xs flex items-center gap-2 transition">
+                    <i class="fa-solid fa-download"></i> Unduh Gambar Lembar Refleksi
+                </button>
+                <button onclick="window.print()" class="px-5 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white font-bold rounded-xl text-xs flex items-center gap-2 transition">
+                    <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-emerald-950 text-white border border-gold-400 px-4 py-3 rounded-xl shadow-2xl transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-2 text-xs font-semibold z-50">
+        <i class="fa-solid fa-circle-check text-gold-400 text-base"></i>
+        <span id="toast-msg">Notifikasi</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-emerald-950 text-emerald-200/80 py-6 border-t-2 border-gold-500 text-center text-xs no-print mt-12">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <p class="font-semibold text-emerald-100">Portal Refleksi Pembelajaran Bahasa Arab — MAN 2</p>
+            <p class="font-arabic text-sm text-gold-400">اللُّغَةُ الْعَرَبِيَّةُ لُغَةُ الْقُرْآنِ وَالْعِلْمِ</p>
+            <p class="text-slate-400 text-[11px]">Khusus Siswa-Siswi Kelas X dan XI MAN 2</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Global States
+        let currentTab = 1;
+        let selectedMood = '😊 Sangat Senang';
+        let canvas, ctx;
+        let isDrawing = false;
+        let lastX = 0, lastY = 0;
+        let brushColor = '#0d9488';
+        let brushSize = 4;
+        let currentMode = 'draw'; // 'draw', 'erase', 'sticker'
+        let selectedSticker = '';
+
+        // Web Speech Audio Synthesis
+        function speakArabic(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Initialize Canvas on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            initCanvas();
+            // Select default first mood button
+            const firstMood = document.querySelector('.mood-btn');
+            if (firstMood) selectMood('😊 Sangat Senang', firstMood);
+        });
+
+        function switchTab(tabNum) {
+            currentTab = tabNum;
+            const tab1 = document.getElementById('tab-component-1');
+            const tab2 = document.getElementById('tab-component-2');
+            const btn1 = document.getElementById('btn-tab-1');
+            const btn2 = document.getElementById('btn-tab-2');
+
+            if (tabNum === 1) {
+                tab1.classList.remove('hidden');
+                tab2.classList.add('hidden');
+                btn1.className = "flex-1 py-3.5 px-5 rounded-2xl font-bold text-sm md:text-base flex items-center justify-center gap-3 transition-all duration-200 bg-emerald-800 text-white shadow-md";
+                btn2.className = "flex-1 py-3.5 px-5 rounded-2xl font-bold text-sm md:text-base flex items-center justify-center gap-3 transition-all duration-200 bg-white text-slate-700 border border-slate-200 hover:bg-slate-50";
+            } else {
+                tab2.classList.remove('hidden');
+                tab1.classList.add('hidden');
+                btn2.className = "flex-1 py-3.5 px-5 rounded-2xl font-bold text-sm md:text-base flex items-center justify-center gap-3 transition-all duration-200 bg-mint-700 text-white shadow-md";
+                btn1.className = "flex-1 py-3.5 px-5 rounded-2xl font-bold text-sm md:text-base flex items-center justify-center gap-3 transition-all duration-200 bg-white text-slate-700 border border-slate-200 hover:bg-slate-50";
+                
+                // Resize canvas after unhiding
+                setTimeout(resizeCanvas, 50);
+            }
+        }
+
+        // Mood Selection Handler
+        function selectMood(moodText, btn) {
+            selectedMood = moodText;
+            document.querySelectorAll('.mood-btn').forEach(b => {
+                b.classList.remove('border-emerald-600', 'bg-emerald-50', 'ring-2', 'ring-emerald-500');
+            });
+            btn.classList.add('border-emerald-600', 'bg-emerald-50', 'ring-2', 'ring-emerald-500');
+        }
+
+        // Insert Quick Phrase
+        function insertPhrase(phrase) {
+            const textarea = document.getElementById('reflection-story');
+            textarea.value += phrase;
+            updateWordCount();
+            speakArabic(phrase);
+            showToast("Frasa Bahasa Arab ditambahkan!");
+        }
+
+        function updateWordCount() {
+            const text = document.getElementById('reflection-story').value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            document.getElementById('word-count').innerText = `${words} kata`;
+        }
+
+        /* --- CANVAS DRAWING LOGIC --- */
+        function initCanvas() {
+            canvas = document.getElementById('express-canvas');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+
+            window.addEventListener('resize', resizeCanvas);
+
+            // Mouse Events
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            // Touch Events
+            canvas.addEventListener('touchstart', handleTouchStart);
+            canvas.addEventListener('touchmove', handleTouchMove);
+            canvas.addEventListener('touchend', stopDrawing);
+        }
+
+        function resizeCanvas() {
+            if (!canvas) return;
+            const rect = canvas.parentElement.getBoundingClientRect();
+            // Save contents
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, 0, 0);
+
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+
+            // Restore contents
+            ctx.drawImage(tempCanvas, 0, 0, tempCanvas.width, tempCanvas.height, 0, 0, canvas.width, canvas.height);
+        }
+
+        function setCanvasColor(color, btn) {
+            brushColor = color;
+            currentMode = 'draw';
+            document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('ring-2', 'ring-emerald-600'));
+            btn.classList.add('ring-2', 'ring-emerald-600');
+            updateToolButtons();
+        }
+
+        function setBrushSize(size) {
+            brushSize = size;
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            updateToolButtons();
+        }
+
+        function updateToolButtons() {
+            const drawBtn = document.getElementById('btn-mode-draw');
+            const eraseBtn = document.getElementById('btn-mode-erase');
+            
+            if (currentMode === 'draw') {
+                drawBtn.className = "px-3 py-1.5 bg-emerald-800 text-white font-bold text-xs rounded-lg transition shadow-sm";
+                eraseBtn.className = "px-3 py-1.5 bg-white text-slate-700 font-bold text-xs rounded-lg border border-slate-300 hover:bg-slate-50 transition";
+            } else if (currentMode === 'erase') {
+                eraseBtn.className = "px-3 py-1.5 bg-emerald-800 text-white font-bold text-xs rounded-lg transition shadow-sm";
+                drawBtn.className = "px-3 py-1.5 bg-white text-slate-700 font-bold text-xs rounded-lg border border-slate-300 hover:bg-slate-50 transition";
+            }
+        }
+
+        function selectSticker(sticker) {
+            selectedSticker = sticker;
+            currentMode = 'sticker';
+            showToast(`Stiker '${sticker}' dipilih. Klik di kanvas untuk menempelkan!`);
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('canvas-placeholder').classList.remove('hidden');
+        }
+
+        function getPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        function startDrawing(e) {
+            document.getElementById('canvas-placeholder').classList.add('hidden');
+            const pos = getPos(e);
+
+            if (currentMode === 'sticker') {
+                placeSticker(pos.x, pos.y);
+                return;
+            }
+
+            isDrawing = true;
+            lastX = pos.x;
+            lastY = pos.y;
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            const pos = getPos(e);
+
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(pos.x, pos.y);
+
+            if (currentMode === 'erase') {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.lineWidth = brushSize * 3;
+            } else {
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.strokeStyle = brushColor;
+                ctx.lineWidth = brushSize;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+            }
+
+            ctx.stroke();
+            lastX = pos.x;
+            lastY = pos.y;
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        function handleTouchStart(e) {
+            if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                startDrawing(touch);
+            }
+        }
+
+        function handleTouchMove(e) {
+            if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                draw(touch);
+                e.preventDefault();
+            }
+        }
+
+        function placeSticker(x, y) {
+            if (!selectedSticker) return;
+            ctx.globalCompositeOperation = 'source-over';
+            
+            if (selectedSticker.length > 2) { // Arabic word sticker
+                ctx.font = "bold 24px 'Tajawal', sans-serif";
+                ctx.fillStyle = "#0f766e";
+                ctx.textAlign = "center";
+                ctx.fillText(selectedSticker, x, y);
+                speakArabic(selectedSticker);
+            } else { // Emoji sticker
+                ctx.font = "36px sans-serif";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(selectedSticker, x, y);
+            }
+        }
+
+        /* --- SUBMIT & PUBLISH LOGIC --- */
+        function submitAndPreview() {
+            const name = document.getElementById('student-name').value.trim();
+            const cls = document.getElementById('student-class').value;
+            const no = document.getElementById('student-no').value;
+            const story = document.getElementById('reflection-story').value.trim();
+
+            if (!name || !cls || !no || !story) {
+                showToast("Mohon lengkapi Nama, Kelas, No. Absen, dan Cerita Refleksi!");
+                return;
+            }
+
+            // Populate Modal
+            document.getElementById('modal-name').innerText = name;
+            document.getElementById('modal-class-no').innerText = `${cls} / Absen ${no}`;
+            document.getElementById('modal-mood').innerText = selectedMood;
+            document.getElementById('modal-story').innerText = story;
+            document.getElementById('modal-sig-name').innerText = name;
+
+            // Export Canvas to Image
+            const canvasDataURL = canvas.toDataURL("image/png");
+            document.getElementById('modal-canvas-img').src = canvasDataURL;
+
+            // Show Modal
+            const modal = document.getElementById('preview-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+
+            // Play Praise Speech
+            speakArabic("مُمْتَاز! شُكْرًا لَك");
+
+            // Add to Live Reflection Wall
+            addToGallery(name, cls, no, selectedMood, story);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('preview-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function addToGallery(name, cls, no, mood, story) {
+            const grid = document.getElementById('gallery-grid');
+            
+            const card = document.createElement('div');
+            card.className = "bg-white rounded-2xl p-5 border-2 border-emerald-500 shadow-md space-y-3 animate-fade-in";
+            card.innerHTML = `
+                <div class="flex justify-between items-start border-b pb-2 border-slate-100">
+                    <div>
+                        <strong class="text-sm font-bold text-slate-900 block">${name}</strong>
+                        <span class="text-[11px] text-slate-500 font-semibold">Kelas ${cls} • Absen ${no}</span>
+                    </div>
+                    <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-bold">${mood}</span>
+                </div>
+                <p class="text-xs text-slate-700 line-clamp-3 leading-relaxed">"${story}"</p>
+                <div class="bg-emerald-50 rounded-xl p-2 border border-emerald-100 text-[11px] font-arabic text-emerald-800 font-bold text-center">
+                    شُكْرًا لِلتَّأَمُّلِ الرَّائِعِ 🌟
+                </div>
+            `;
+
+            grid.prepend(card);
+            
+            // Update counter
+            const currentCount = grid.children.length;
+            document.getElementById('gallery-count').innerText = `${currentCount} Refleksi`;
+            
+            showToast("Refleksi berhasil dipublikasikan ke Dinding Refleksi!");
+        }
+
+        function downloadCertificate() {
+            const certElement = document.getElementById('certificate-card');
+            showToast("Menyiapkan unduhan...");
+
+            html2canvas(certElement, { scale: 2 }).then(cvs => {
+                const link = document.createElement('a');
+                link.download = `Refleksi_BahasaArab_MAN2_${document.getElementById('student-name').value || 'Siswa'}.png`;
+                link.href = cvs.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
